@@ -10,9 +10,3 @@ development:
 test:
   <<: *default
   database: todomvc_test
-
-production:
-  <<: *default
-  database: todomvc_production
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>

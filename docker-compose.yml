@@ -15,6 +15,9 @@ services:
     depends_on:
       - 'postgres'
     build: .
+    environment:
+      RAILS_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/todomvc_production?pool=5
     ports:
       - '3000:3000'
 
