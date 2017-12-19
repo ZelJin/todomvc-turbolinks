@@ -3,9 +3,7 @@ version: '2'
 services:
   postgres:
     image: 'postgres:9.6-alpine'
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file: .env
     ports:
       - '${POSTGRES_PORT}:5432'
     volumes:
@@ -15,9 +13,7 @@ services:
     depends_on:
       - 'postgres'
     build: .
-    environment:
-      RAILS_ENV: production
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/todomvc_production?pool=5
+    env_file: .env
     ports:
       - '${PORT}:3000'
 

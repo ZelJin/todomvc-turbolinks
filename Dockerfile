@@ -12,4 +12,4 @@ COPY . .
 
 CMD bundle exec rake db:create && \
   bundle exec rake db:migrate && \
-  bundle exec puma
+  bundle exec puma -p 3000
