@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - '5432:5432'
+      - '${POSTGRES_PORT}:5432'
     volumes:
       - 'postgres:/var/lib/postgresql/data'
 
@@ -17,9 +17,9 @@ services:
     build: .
     environment:
       RAILS_ENV: production
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/todomvc_production?pool=5
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/todomvc_production?pool=5
     ports:
-      - '3000:3000'
+      - '${PORT}:3000'
 
 volumes:
   postgres:
