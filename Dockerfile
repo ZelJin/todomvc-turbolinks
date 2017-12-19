@@ -1,6 +1,6 @@
 FROM ruby:alpine
 
-RUN apk update && apk add build-base nodejs postgresql-dev
+RUN apk update && apk add build-base git nodejs postgresql-dev
 
 RUN mkdir /app
 WORKDIR /app
