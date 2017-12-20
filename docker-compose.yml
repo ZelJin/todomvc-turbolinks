@@ -4,8 +4,6 @@ services:
   postgres:
     image: 'postgres:9.6-alpine'
     env_file: .env
-    ports:
-      - '${POSTGRES_PORT}:5432'
     networks:
       - default
     volumes:
@@ -20,7 +18,7 @@ services:
       RAILS_ENV: production
       RAILS_SERVE_STATIC_FILES: 'true'
     ports:
-      - '${PORT}:3000'
+      - '3000'
     networks:
       - default
 
