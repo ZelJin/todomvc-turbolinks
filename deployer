@@ -5,7 +5,7 @@ REPO_URL=$(git config --get remote.origin.url)
 
 # Simple help command
 help_command() {
-  echo "Usage: deployer.sh <command> <commit_hash>"
+  echo "Usage: ./deployer <command> <commit_hash>"
   echo "Available commands: start, stop"
 }
 
