@@ -29,7 +29,7 @@ The application can be terminated with the following command:
 `./deployer stop <commit_hash>`
 
 Please note that the earliest possible commit hash that is compatible with
-this tool is `6b990d9`.
+this tool is `44d91fd`. Before this commit there was a race condition related to the starting order of the containers. You can check [this link](https://docs.docker.com/compose/startup-order/) on container startup order in Docker Compose for more details. 
 
 If the script is not working, please use `chmod` to make the script executable:
 
