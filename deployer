@@ -10,6 +10,15 @@ help_command() {
 }
 
 # This command starts the snapshot
+# First, it clones the application repository to a temp folder
+# Then the correct commit is being checked out
+# After that the default configuration is being pluged in
+# TODO: Add flags to override default .env.example file
+# Finally, docker-compose handles application creation
+# Different snapshot versions are being separated thanks to
+# COMPOSE_PROJECT_NAME variable in docker-compose
+# Finally, docker inspect is used to figure out the
+# automatically assigned application port
 start_command() {
   if [ -z "$2" ]; then
     echo "Commit hash of the snapshot must be provided!"
@@ -25,9 +34,11 @@ start_command() {
   APP_CONTAINER="$2_todomvc-turbolinks_1"
   APP_PORT=$(docker inspect $APP_CONTAINER --format='{{(index (index .NetworkSettings.Ports "3000/tcp") 0).HostPort}}')
   echo "Application is running at http://0.0.0.0:$APP_PORT"
+  rm -rf /tmp/$2
 }
 
 # This commands terminates the snapshot
+# by calling the correct docker-compose command
 stop_command() {
   if [ -z "$2" ]; then
     echo "Commit hash of the snapshot must be provided!"
