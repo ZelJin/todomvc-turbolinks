@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Get the repository URL
 REPO_URL=$(git config --get remote.origin.url)
 
