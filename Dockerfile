@@ -12,6 +12,6 @@ COPY . .
 
 RUN bundle exec rake assets:precompile
 
-CMD sleep 3 && bundle exec rake db:create && \
+CMD sleep 5 && bundle exec rake db:create && \
   bundle exec rake db:migrate && \
   bundle exec puma -p 3000
